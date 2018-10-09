@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block title %} my todo{% endblock title %}
+{% block container %}
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<body class="or">
+<div id="contain">
+    <div class="content">
+        <h1>TODOAPP</h1>
+        <p class="tag"> a Django todo app</p>
+        <form class="horizon" action="{% url 'new_todo' %}" method="POST" class="form-horizontal">
+        {% csrf_token %}
+     <!--   {{ form.as_p }} -->
+            {% load widget_tweaks %}
+
+               {% render_field form.name type="name" %}
+                {% render_field form.title class+="css_class_1 css_class_2" %}
+               {% render_field form.description rows="10" cols="40" title="Hello, world!" %}
+               {% render_field form.time_added type="date" %}
+               {% render_field form.due_date type="date" %}
+               {% render_field form.created type="date" %}
+
+
+
+
+
+
+
+
+
+            <div class="row">
+                <button class="Add" name="addtask" type="submit">
+                    <i class="fa fa-plus icon"></i>ADD TASK
+                </button>
+                <button class="taskdel" name="Delete" formnovalidate="" type="submit" onclick="$('input').click();"><i class="fa fa-trash-o icon"></i>Delete Tasks</button>
+            </div>
+
+
+
+
+
+
+
+            </div>
+
+
+
+    </div>
+
+
+ </form>
+</body>
+{% endblock container %}
+

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %} my todo{% endblock title %}
+{% block container %}
+  <div class="con">
+      {% if all_my_todos %}
+      {% for my_todo in all_my_todos %}
+      <p>{{ my_todo.title}}</p>
+      <p>{{ my_todo.description}}</p>
+      <p>{{ my_todo.time_added}}</p>
+      <a href="{% url 'delete_todo' id=my_todo.pk %}">delete</a>
+       <a href="{% url 'edit_todo' id=my_todo.pk %}">edit</a>
+      {% endfor %}
+      {% else %}
+
+      {% endif %}
+
+  </div>
+{% endblock container %}
+#<p>{{ my_todo.pk}}</p>

@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% block title %} my todo{% endblock title %}
+{% block container %}
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+{% load static %}
+<link rel="stylesheet" href="{%static 'css/styles.css'%}">
+
+<body class="or">
+
+
+        <!--{{ form.as_p }}-->
+          <!--  <div class="inputcon">
+                <input type="text" id="TITLE" class="Title" name="TITle" required>
+
+            <label for ="TITLE">Title</label>
+            </div>-->
+            {% load widget_tweaks %}
+            <div django-app="Taskmanager">
+                <div class="container">
+                    <div class="content">
+                        <h1>TODOAPP</h1>
+        <p class="tagline"> a Django todo app</p>
+        <form class="horizon" action="{% url 'new_todo' %}" method="POST" class="form-horizontal">
+        {% csrf_token %}
+
+             <div class="raw">
+                  <label>Name :</label>
+                 {% render_field form.name type="name" class="taged" title="user name" %}
+
+             </div>
+
+
+               {% render_field form.description rows="10" cols="40" title="what do you need to do!" %}
+               {% render_field form.time_added type="date" %}
+               {% render_field form.due_date type="date" %}
+
+
+
+
+
+            <div class="row">
+                <button class="Add" name="addtask" type="submit">
+                    <i class="fa fa-plus icon"></i>ADD TASK
+                </button>
+                <button class="taskdel" name="Delete" formnovalidate="" type="submit" onclick="$('input').click();"><i class="fa fa-trash-o icon"></i>Delete Tasks</button>
+            </div>
+
+             <ul class="taskList">
+            {% for todo in todos %} <!-- django templates lang - for loop -->
+                <li class="taskItem">
+                    <input type="checkbox" class="taskCheckbox" name="checkedbox" id="{{ todo.id }}" value="{{ todo.id }}">
+                    <label for="{{ todo.id }}"><span class="complete-">{{ todo.title }}</span></label>
+
+                    <strong class="taskDate"><i class="fa fa-calendar"></i>{{ todo.created }} - {{ todo.due_date }}</strong>
+                </li>
+            {% endfor %}
+            </ul>
+        </form>
+                        </div>
+ </div>
+</div>
+
+
+
+</body>
+{% endblock container %}
+
+#csrf_token cross site forgery attack

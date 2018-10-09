@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %} my todo{% endblock title %}
+{% block container %}
+<div class="his">
+<h2 class="first">Welcome To My Page</h2>
+<a class="we" href="{% url 'about' %}">TO DO List</a>
+<a class="we" href="{% url 'contact' %}">Register</a>
+
+<a class="we" href="{% url 'mytodos'%}"> My To Do</a>
+
+</div>
+
+{% endblock container %}

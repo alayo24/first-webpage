@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %} my todo{% endblock title %}
+{% block container %}
+ <div class="con">
+     <form method="post">
+         {{form.as_p}}
+         <button type="submit">Submit
+
+         </button>
+     </form>
+ </div>
+{% endblock container %}
+#<p>{{ my_todo.pk}}</p>
